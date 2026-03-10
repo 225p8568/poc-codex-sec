@@ -38,7 +38,7 @@ poc-codex-sec/
 | 3 | **Path Traversal** | Python, JavaScript, Java | CWE-22 |
 | 4 | **Server-Side Request Forgery (SSRF)** | Python | CWE-918 |
 | 5 | **Reflected XSS / Template Injection** | Python, JavaScript | CWE-79 |
-| 6 | **Insecure Deserialization** | Python (`pickle`), JavaScript (`node-serialize`), Java | CWE-502 |
+| 6 | **Insecure Deserialization** | Python (`pickle`), JavaScript (`eval`), Java | CWE-502 |
 | 7 | **Hardcoded Credentials / Secrets** | Python, JavaScript, Java | CWE-798 |
 | 8 | **Weak Cryptography (MD5)** | Python, Java | CWE-327 |
 | 9 | **Open Redirect** | Python, JavaScript | CWE-601 |

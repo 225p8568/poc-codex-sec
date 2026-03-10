@@ -7,7 +7,6 @@ const express = require("express");
 const { exec } = require("child_process");
 const fs = require("fs");
 const path = require("path");
-const serialize = require("node-serialize");
 
 const app = express();
 app.use(express.json());
@@ -65,12 +64,13 @@ app.get("/file", (req, res) => {
 });
 
 // ------------------------------------------------------------------ //
-// VULNERABILITY 6 – Insecure Deserialization (node-serialize)        //
+// VULNERABILITY 6 – Insecure Deserialization (eval on user data)     //
 // ------------------------------------------------------------------ //
 app.post("/deserialize", (req, res) => {
   const data = req.body.data || "{}";
-  // Insecure deserialization: arbitrary object from user
-  const obj = serialize.unserialize(data);
+  // Insecure deserialization: user-supplied string executed via eval,
+  // allowing arbitrary code execution (equivalent to node-serialize IIFE pattern).
+  const obj = eval("(" + data + ")");
   res.json(obj);
 });
 
